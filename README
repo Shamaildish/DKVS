@@ -1,0 +1,32 @@
+Distributed Key-Value Store
+
+This repository holds 1 program with 3 diffent entities:
+
+1 Load Balancer
+2 Server (Storage)
+3 Client
+
+
+
+1 Load Balancer
+-----------------
+
+(*) responsible for distributing the requests that arrives to the servers.
+(*) being notify when a new Server is ready to receive requests form Clients.
+(*) recives a requests from Clients and responding with a service address (server address and service port).
+(*) using 'consisting hash' in order to enable the joining of new service.
+
+
+2 Server
+----------
+
+(*) notify Load Balancer when ready to receive requests from Clients.
+(*) receiveing requests from Clients and responding accordingly.
+(*) using hash function in order to hold Key-Value.
+
+
+3 Client
+----------
+
+(*) sending requests to the Load Balancer in order to get service address.
+(*) sending requests to the Server in order to get service.

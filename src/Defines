@@ -1,0 +1,21 @@
+
+// TCPConnection
+#define DEBUG						1
+#define MAX_DATA_SIZE				4194304
+#define DONE						"!DONE!"
+
+// DKVServer
+#define SERVER_CAPACITY				4194304
+
+// DKVIndexer
+#define SET					0
+#define GET					1
+//#define FILE				2
+#define HELLO				3
+#define GOODBYE				4
+#define REQUEST_GOT			5
+#define RESPOND_GOT			6
+
+// ConsistingHashing
+#define VIRTUAL_NAMES				3
+#define HASH_DOUBLE_VALUE			15687.3378107
