@@ -68,10 +68,6 @@ std::string 		DKVS_Indexer::Get (int server)
 // get address
 std::string 		DKVS_Indexer::Get(std::string key)
 {
-	if (DEBUG)
-	{
-		std::cout << "DKVS_Indexer::Get" << std::endl;
-	}
 	return  hash_ring.get_service(key);
 }
 
@@ -255,7 +251,7 @@ void 				DKVS_Indexer::Indexer_ClientMessageHandler (TCPConnection *conn, int so
 	std::string 				serverInfo;
 
 	// get server info
-	serverInfo = hash_ring.get_service(key);
+	serverInfo = Get(key);
 
 	// generate respond
 	respond.append(serverInfo);

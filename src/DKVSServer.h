@@ -38,12 +38,6 @@ private:
 	std::vector<int>		servicesPorts;
 	HashTable				hashTable;
 
-	// connect to indexer
-	int ConnectToIndexer (TCPConnection* indexerConn);
-
-	// accept requests
-	int AcceptRequest (int servicePort, char* buff);
-
 	// handlers
 	void Server_MessageHandler (TCPConnection* conn, int sock, std::string msg);
 	void Server_IndexerMessageHandler(TCPConnection *conn, int sock, std::string request, int reqType);

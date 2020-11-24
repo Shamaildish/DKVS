@@ -67,7 +67,7 @@ void 			DKVS_Client::Run()
 		std::cin >> usrInput;
 
 		// quieting
-		if (!strcmp((char*)&usrInput, "q"))
+		if (usrInput == 'q')
 		{
 			std::cout << std::endl << "	Bye Bye =]" << std::endl;
 			return;
@@ -110,29 +110,16 @@ void 			DKVS_Client::Run()
 		int serverSock = serverConn.connect_to(serverAddr, serverPort);
 
 		// set
-		if (strcmp((char*)&usrInput, "s"))
+		if (usrInput == 's')
 		{
-			std::cout << "SET" << std::endl;
 
 			// get value
 			std::cout << "Enter value: ";
 			std::cin >> value;
 
-
-			if (DEBUG)
-			{
-				std::cout << "value: " << value << std::endl;
-			}
-
-
 			// generate request to server
 			memset(buff, '\0', MAX_DATA_SIZE);
 			sprintf (buff, "%d~%s:%s\0", SET, key.c_str(), value.c_str());
-
-			if (DEBUG)
-			{
-				std::cout << "msg generated " << buff << std::endl;
-			}
 
 			// send request to server
 			serverConn.send_uni(serverSock, std::string(buff));
@@ -153,11 +140,11 @@ void 			DKVS_Client::Run()
 			std::cout << key.c_str() << " was added to " << serverAddr.c_str() << ":" << serverPort << std::endl;
 		}
 
-		else if (strcmp((char*)&usrInput, "g"))
+		else if (usrInput == 'g')
 		{
 			// generate request to server
 			memset (buff, '\0', MAX_DATA_SIZE);
-			sprintf (buff, "%d~%s\0", GET, key);
+			sprintf (buff, "%d~%s\0", GET, key.c_str());
 
 			// send request to server
 			serverConn.send_uni(serverSock, std::string(buff));
@@ -175,7 +162,7 @@ void 			DKVS_Client::Run()
 				std::cout << "ERROR: server does not hold the key" << std::endl;
 				return;
 			}
-			std::cout << "the value of key '" << key << "' is '" << respond[1] << std::endl;
+			std::cout << "the value of key '" << key << "' is '" << respond[1] << "'" << std::endl;
 		}
 
 		else

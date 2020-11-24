@@ -73,9 +73,6 @@ int TCPConnection::StartListeningOn(int port)
 		close (welcomSocket);
 		return -1;
 	}
-
-	printf ("Listening on port %d\n", port);
-
 	return welcomSocket;
 }
 
@@ -110,9 +107,6 @@ int TCPConnection::Connect(std::string address, int port)
 		close (sock);
 		return -1;
 	}
-
-	printf ("Connected to %s on port %d\n", address.c_str(), port);
-
 	return sock;
 }
 
@@ -130,10 +124,6 @@ int TCPConnection::Accept(int listener)
 
 void TCPConnection::Disconnect(int sock)
 {
-	if (DEBUG)
-	{
-		std::cout << " Disconnect from socket " << sock << std::endl;
-	}
 	close (sock);
 }
 
@@ -216,10 +206,6 @@ int TCPConnection::send_uni(int dstSock, std::string msg)
 
 int TCPConnection::send_multi(int* dstSocks, int numDests, std::string msg)
 {
-	if (DEBUG)
-	{
-		std::cout << " User send multicast '" << msg.c_str() << "' to scokets  ";
-	}
 
 	if (msg.size() > MAX_DATA_SIZE)
 	{
@@ -230,11 +216,6 @@ int TCPConnection::send_multi(int* dstSocks, int numDests, std::string msg)
 	int sizeSent;
 	for (int i=0; i < numDests; i++)
 	{
-		if (DEBUG)
-		{
-			std::cout << dstSocks[i] << " " << std::endl;
-		}
-
 		sizeSent = Send (dstSocks[i], msg);
 		if (sizeSent != msg.size())
 		{
