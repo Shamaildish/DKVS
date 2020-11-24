@@ -1,0 +1,30 @@
+#!/bin/bash
+
+numOfServers=$1
+serverCapacity=$2
+
+consisting_hash_size=$(($1 * $2))
+
+## kill all previous processes
+kill -9 $(pidof DKVS) 2> /dev/null
+
+## run Load Balancer
+gnome-terminal -e  "./DKVS 0 $consisting_hash_size"
+echo ""
+sleep 0.5
+
+## run servers
+init_port=3030
+
+for ((srv=0; srv<$numOfServers; srv++))
+do
+	echo ""
+	gnome-terminal -e "./DKVS 1 $init_port $serverCapacity"
+	((init_port=init_port+1010))
+	
+	sleep 0.5
+done
+
+## run client
+echo ""
+gnome-terminal -e "./DKVS 2"
