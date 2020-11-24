@@ -30,3 +30,17 @@ This repository holds 1 program with 3 diffent entities:
 
 (*) sending requests to the Load Balancer in order to get service address.
 (*) sending requests to the Server in order to get service.
+
+
+You can simply run the program using script 'run' in Debug directory with 2 arguments:
+1. number of servers you would like to deploy.
+2. capacity of servers.
+
+You can run the program using 'DKVS' in Debug directory.
+- To deploy load balancer use command "./DKVS 0 <consisting-hash-size>"
+- To deploy server use command "./DKVS 1 <port> <hash-size>"
+- To deploy the client use command "./DKVS 2"
+
+make sure you are replacing <> with apropriate argument.
+
+Have fun!
