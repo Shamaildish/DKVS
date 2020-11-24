@@ -238,11 +238,6 @@ void 				DKVS_Indexer::Indexer_ClientMessageHandler (TCPConnection *conn, int so
 		return;
 	}
 
-	if (DEBUG)
-	{
-		std::cout << "Client request: " << requestType << " " << key.c_str() << std::endl;
-	}
-
 	GeneralFunctions g;
 	char* 						charReqType;
 	sprintf (charReqType, "%d~\0", requestType);

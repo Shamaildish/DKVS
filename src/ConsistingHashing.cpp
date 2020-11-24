@@ -208,6 +208,17 @@ int							ConsistingHashing::add_service(std::string addr, int port)
 	return 0;
 }
 
+int							ConsistingHashing::HashKey(std::string key)
+{
+	double res;
+	for (int i=0; i<key.size(); i++)
+	{
+		res += int(key.at(i));
+	}
+	res *= 3146.14821;
+	return int(res) % ring.size();
+}
+
 void 						ConsistingHashing::show_ring()
 {
 	if (DEBUG)
@@ -228,13 +239,13 @@ std::vector<std::string>	ConsistingHashing::get_ring()
 
 std::string					ConsistingHashing::get_service(std::string key)
 {
-	int keyPos = HashName(key);
+	int keyPos = HashKey(key);
 	return ring[keyPos].substr(0, ring[keyPos].size() - 2);
 }
 
 std::string					ConsistingHashing::next_server(std::string key, int hops)
 {
-	int prevKeyPos = HashName(key);
+	int prevKeyPos = HashKey(key);
 	int keyPos = prevKeyPos;
 	for (int i=0; i<hops; i++)
 	{
