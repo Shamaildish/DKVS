@@ -30,10 +30,6 @@ private:
 	// hash function for full server names (including the virtual/original bit)
 	int							HashName(std::string fullServerName);
 
-	// hash function for keys
-	int							HashKey(std::string key);
-
-
 	// generate server's name
 	void						GenerateServerName(std::string serverInfo, std::vector<int> *names);
 

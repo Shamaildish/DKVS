@@ -33,10 +33,6 @@ void 				DKVS_Server::run_service(int portPos)
 	// get local ip
 	GeneralFunctions g;
 	serverAddr = g.getIP();
-
-	std::cout	<< "address: " << serverAddr.c_str() << std::endl
-				<< "port: " << servicesPorts[portPos] << std::endl;
-
 	if (serverAddr.size() == 0)
 	{
 		return;
@@ -211,8 +207,6 @@ void 				DKVS_Server::Server_ClientMessageHandler(TCPConnection *conn, int sock,
 	{
 		// store key-value
 		hashTable.insert(kv[0], kv[1]);
-
-		std::cout << "'" << kv[0] << "' was added successfully to DB" << std::endl;
 
 		// return ack to client
 		respond.append("ACK");
