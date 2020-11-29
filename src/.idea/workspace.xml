@@ -12,22 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f43fd86b-8ee5-4076-951d-5d76dcab04d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ConsistingHashing.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsistingHashing.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DKVSClient.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DKVSClient.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DKVSIndexer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DKVSIndexer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DKVSServer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DKVSServer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Defines" beforeDir="false" afterPath="$PROJECT_DIR$/Defines" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneralFunctions.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GeneralFunctions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HashTable.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HashTable.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCPConnection.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCPConnection.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoadBalancer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/LoadBalancer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/LoadBalancer.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/Server.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/DKVS" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DKVS" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606667554552</updated>
-      <workItem from="1606667556680" duration="689000" />
+      <workItem from="1606667556680" duration="4773000" />
     </task>
     <servers />
   </component>

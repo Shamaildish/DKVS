@@ -15,6 +15,7 @@
 #define GOODBYE				4
 #define REQUEST_GOT			5
 #define RESPOND_GOT			6
+#define MAX_THREADS             100
 
 // Consisting Hash
 #define VIRTUAL_NAMES				3

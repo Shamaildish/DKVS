@@ -66,16 +66,16 @@ void    ThreadFunc(LoadBalancer *lb)
 // run load balancer
 int 				LoadBalancer::run()
 {
+    std::thread threads[MAX_THREADS];
+    int threadCount = 0;
 	char buff[MAX_DATA_SIZE];
 	Connection remoteConnection;
 	remoteConnection.listen_on(lb_port);
 	connection = &remoteConnection;
 	int remoteSock;
 
-	std::cout << "dfedg54" << std::endl;
-	while (1)
+	while (threadCount <= MAX_THREADS)
 	{
-		std::cout << std::endl << "waiting for new connection" << std::endl;
 		// accept connection
         remoteSock = remoteConnection.accept_connection();
 
@@ -85,12 +85,17 @@ int 				LoadBalancer::run()
 		setCI(remoteSock, std::string(buff));
 
         // call thread function
-        std::cout << "nefore thread" << std::endl;
-        std::thread t(ThreadFunc, this);
-
-		// call message handler
+//        std::thread t(ThreadFunc, this);
+        threads[threadCount] = std::thread(ThreadFunc, this);
+        threadCount++;
+       		// call message handler
 //		LB_MessageHandler(&remoteConnection, remoteSock, std::string(buff));
 	}
+
+	for (int thrd=0; thrd<threadCount; thrd++)
+    {
+        threads[thrd].join();
+    }
 
 }
 
