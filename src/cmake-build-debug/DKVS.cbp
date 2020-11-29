@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="DKVS"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/edan/workspace/DKVS/src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/edan/workspace/DKVS/src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/edan/workspace/DKVS/src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DKVS">
+				<Option output="/home/edan/workspace/DKVS/src/cmake-build-debug/DKVS" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/edan/workspace/DKVS/src/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/edan/workspace/DKVS/src/."/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 DKVS"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DKVS/fast">
+				<Option output="/home/edan/workspace/DKVS/src/cmake-build-debug/DKVS" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/edan/workspace/DKVS/src/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/edan/workspace/DKVS/src/."/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 DKVS/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/edan/workspace/DKVS/src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/edan/workspace/DKVS/src/Client.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Client.h">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Connection.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Connection.h">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/ConssistingHash.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/ConssistingHash.h">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Defines">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Function.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Function.h">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Hash.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Hash.h">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/LoadBalancer.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/LoadBalancer.h">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Server.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/Server.h">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/main.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

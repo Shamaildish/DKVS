@@ -1,0 +1,1 @@
+/usr/bin/c++   -pthread -g   CMakeFiles/DKVS.dir/Client.cpp.o CMakeFiles/DKVS.dir/Connection.cpp.o CMakeFiles/DKVS.dir/ConssistingHash.cpp.o CMakeFiles/DKVS.dir/Function.cpp.o CMakeFiles/DKVS.dir/Hash.cpp.o CMakeFiles/DKVS.dir/LoadBalancer.cpp.o CMakeFiles/DKVS.dir/main.cpp.o CMakeFiles/DKVS.dir/Server.cpp.o  -o DKVS 
