@@ -1,12 +1,13 @@
 /*
- * HashTable.h
+ * Hash.h
  *
- *  Created on: Oct 23, 2020
+ *  Created on: Nov 26, 2020
  *      Author: edan
  */
 
-#ifndef HASHTABLE_H_
-#define HASHTABLE_H_
+#ifndef HASH_H_
+#define HASH_H_
+
 
 #include <iostream>
 #include <string>
@@ -15,12 +16,13 @@
 #include <stdio.h>
 #include <stdint.h>		/* uintX_t */
 #include "Defines"
-#include "GeneralFunctions.h"
+#include "Function.h"
 
-class HashTable {
+
+class Hash {
 public:
-	HashTable();
-	virtual ~HashTable();
+	Hash();
+	virtual ~Hash();
 
 	// create hash table
 	void 								create_table(int size);
@@ -34,7 +36,7 @@ public:
 	// check if exist
 	bool								is_exist(std::string key);
 
-	// printf hash table
+	// print hash table
 	void								show();
 
 private:
@@ -44,11 +46,11 @@ private:
 	int									size;
 
 	// get position in keys
-	uint64_t 							Hash(std::string key);
+	uint64_t 							HashFunc(std::string key);
 
 	// convert string to int
 	uint64_t							StringToInt(std::string str);
 
 };
 
-#endif /* HASHTABLE_H_ */
+#endif /* HASH_H_ */

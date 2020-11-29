@@ -1,22 +1,22 @@
 /*
- * ConsistingHashing.cpp
+ * ConssistingHash.cpp
  *
  *  Created on: Oct 24, 2020
  *      Author: edan
  */
 
-#include "ConsistingHashing.h"
+#include "ConssistingHash.h"
 
 
 /*								CONSTRUCTOR/DESTRUCTOR								*/
 
-ConsistingHashing::ConsistingHashing(int circleSize)
+ConssistingHash::ConssistingHash(int circleSize)
 : ring(std::vector<std::string>(circleSize)), size(circleSize), occ_spots(0)
 {
 	std::fill (ring.begin(), ring.end(), std::string("0.0.0.0:0000"));
 }
 
-ConsistingHashing::~ConsistingHashing()
+ConssistingHash::~ConssistingHash()
 {
 
 }
@@ -24,7 +24,7 @@ ConsistingHashing::~ConsistingHashing()
 /*								PRIVATE								*/
 
 // hash function for full server names (including the virtual/original bit)
-int							ConsistingHashing::HashName(std::string serverLongName)
+int							ConssistingHash::HashName(std::string serverLongName)
 {
 	if (((int)((uint64_t)(atoi(serverLongName.c_str()) * HASH_DOUBLE_VALUE)) % size) < 0)
 	{
@@ -34,7 +34,7 @@ int							ConsistingHashing::HashName(std::string serverLongName)
 }
 
 // generate server's name
-void				 		ConsistingHashing::GenerateServerName(std::string serverInfo, std::vector<int> *names)
+void				 		ConssistingHash::GenerateServerName(std::string serverInfo, std::vector<int> *names)
 {
 
 	int oct1, oct2, oct3, oct4, port, type;
@@ -67,7 +67,7 @@ void				 		ConsistingHashing::GenerateServerName(std::string serverInfo, std::ve
 }
 
 // add server to circle
-std::vector<int>			ConsistingHashing::AddServer(std::string m_ServerInfo)
+std::vector<int>			ConssistingHash::AddServer(std::string m_ServerInfo)
 {
 
 	std::string serverInfo = m_ServerInfo;
@@ -97,7 +97,7 @@ std::vector<int>			ConsistingHashing::AddServer(std::string m_ServerInfo)
 }
 
 // fill backward with server name until another server
-void						ConsistingHashing::FillBackward (std::vector<int> poss, std::string m_ServerInfo)
+void						ConssistingHash::FillBackward (std::vector<int> poss, std::string m_ServerInfo)
 {
 
 	std::string serverInfo = m_ServerInfo;
@@ -140,7 +140,7 @@ void						ConsistingHashing::FillBackward (std::vector<int> poss, std::string m_
 }
 
 // find closest server
-int							ConsistingHashing::FindForward (int keyPos)
+int							ConssistingHash::FindForward (int keyPos)
 {
 
 	// get server at key value position
@@ -183,7 +183,7 @@ int							ConsistingHashing::FindForward (int keyPos)
 
 /*								PUBLIC								*/
 
-int							ConsistingHashing::add_service(std::string addr, int port)
+int							ConssistingHash::add_service(std::string addr, int port)
 {
 	if (DEBUG)
 	{
@@ -208,7 +208,7 @@ int							ConsistingHashing::add_service(std::string addr, int port)
 	return 0;
 }
 
-int							ConsistingHashing::HashKey(std::string key)
+int							ConssistingHash::HashKey(std::string key)
 {
 	double res;
 	for (int i=0; i<key.size(); i++)
@@ -219,7 +219,7 @@ int							ConsistingHashing::HashKey(std::string key)
 	return int(res) % ring.size();
 }
 
-void 						ConsistingHashing::show_ring()
+void 						ConssistingHash::show_ring()
 {
 	if (DEBUG)
 	{
@@ -232,18 +232,18 @@ void 						ConsistingHashing::show_ring()
 	}
 }
 
-std::vector<std::string>	ConsistingHashing::get_ring()
+std::vector<std::string>	ConssistingHash::get_ring()
 {
 	return ring;
 }
 
-std::string					ConsistingHashing::get_service(std::string key)
+std::string					ConssistingHash::get_service(std::string key)
 {
 	int keyPos = HashKey(key);
 	return ring[keyPos].substr(0, ring[keyPos].size() - 2);
 }
 
-std::string					ConsistingHashing::next_server(std::string key, int hops)
+std::string					ConssistingHash::next_server(std::string key, int hops)
 {
 	int prevKeyPos = HashKey(key);
 	int keyPos = prevKeyPos;

@@ -1,26 +1,23 @@
 /*
- * ConsistingHashing.h
+ * ConssistingHash.h
  *
- *  Created on: Oct 24, 2020
+ *  Created on: Nov 26, 2020
  *      Author: edan
  */
 
-#ifndef CONSISTINGHASHING_H_
-#define CONSISTINGHASHING_H_
+#ifndef CONSSISTINGHASH_H_
+#define CONSSISTINGHASH_H_
 
 #include <stdio.h>			/* itoa */
 #include <iostream>
 #include <string>
 #include <vector>
 #include <stdlib.h>			/* atoi */
-#include "TCPConnection.h"
+#include "Connection.h"
 #include "Defines"
 
-//#define VIRTUAL_NAMES				3
-//#define HASH_DOUBLE_VALUE			15687.3378107
 
-class ConsistingHashing
-{
+class ConssistingHash {
 private:
 
 	std::vector<std::string> 	ring;
@@ -48,8 +45,8 @@ private:
 
 public:
 
-	ConsistingHashing(int size);
-	~ConsistingHashing();
+	ConssistingHash(int size);
+	~ConssistingHash();
 
 	// add server
 	int							add_service(std::string serverAddr, int port);
@@ -69,5 +66,4 @@ public:
 	// find next server in the ring
 	std::string					next_server(std::string key, int hops);
 };
-
-#endif /* CONSISTINGHASHING_H_ */
+#endif /* CONSSISTINGHASH_H_ */

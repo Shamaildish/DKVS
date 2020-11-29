@@ -5,48 +5,91 @@
  *      Author: edan
  */
 
-#include "DKVSIndexer.h"
+#include "LoadBalancer.h"
 
 std::string 				Get(int server);
 std::string 				Get(std::string key);
-void						Indexer_MessageHandler (TCPConnection* conn, int sock, std::string msg);
-void 						Indexer_ServerMessageHandler (DKVS_Indexer* indexer, TCPConnection* conn, int sock, std::string msg, int reqType);
-void 						Indexer_ClientMessageHandler (DKVS_Indexer* indexer, TCPConnection* conn, int sock, std::string msg, int reqType);
+void						LB_MessageHandler (Connection* conn, int sock, std::string msg);
+void 						LB_ServerMessageHandler (LoadBalancer* indexer, Connection* conn, int sock, std::string msg, int reqType);
+void 						LB_ClientMessageHandler (LoadBalancer* indexer, Connection* conn, int sock, std::string msg, int reqType);
 
 /********************************** CONSTRUCTORS/DESTRUCTOR ***********************************/
 
-DKVS_Indexer::DKVS_Indexer(int port, int hashSize)
-: indexer_port(port), servers(std::vector<std::string>(0)), hash_ring(ConsistingHashing(hashSize)), served_sock(0)
-//, handler(Indexer_MessageHandler)
+LoadBalancer::LoadBalancer(int port, int hashSize)
+: lb_port(port), servers(std::vector<std::string>(0)), hash_ring(ConssistingHash(hashSize))
+//, conn(new Connection()), temp_sock(-1), temp_msg(std::string(0))
+{
+    run();
+}
+
+LoadBalancer::LoadBalancer(LoadBalancer *lb)
+        : lb_port(lb->lb_port), servers(lb->servers), hash_ring(lb->hash_ring)
+//        , conn(lb->conn), temp_sock(lb->temp_sock), temp_msg(lb->temp_msg)
 {
 
 }
 
-DKVS_Indexer::~DKVS_Indexer()
+LoadBalancer::~LoadBalancer()
 {
 
 }
 
 /********************************** PUBLIC ***********************************/
 
-// run indexer
-int 				DKVS_Indexer::run()
+void LoadBalancer::setCI(int sock, std::string message)
+{
+    cInfo.sock = sock;
+    cInfo.msg = message;
+}
+
+int LoadBalancer::getSock()
+{
+    return cInfo.sock;
+}
+
+std::string LoadBalancer::getMessage()
+{
+    return cInfo.msg;
+}
+
+Connection* LoadBalancer::getConnection()
+{
+    return connection;
+}
+
+void    ThreadFunc(LoadBalancer *lb)
+{
+    std::cout << "ThreadFunc" << std::endl;
+    lb->LB_MessageHandler(lb->getConnection(), lb->getSock(), lb->getMessage());
+}
+
+// run load balancer
+int 				LoadBalancer::run()
 {
 	char buff[MAX_DATA_SIZE];
-	TCPConnection remoteConnection;
-	remoteConnection.listen_on(indexer_port);
+	Connection remoteConnection;
+	remoteConnection.listen_on(lb_port);
+	connection = &remoteConnection;
 	int remoteSock;
 
+	std::cout << "dfedg54" << std::endl;
 	while (1)
 	{
+		std::cout << std::endl << "waiting for new connection" << std::endl;
 		// accept connection
-		remoteSock = remoteConnection.accept_connection();
+        remoteSock = remoteConnection.accept_connection();
 
 		// receive message
 		remoteConnection.receive(remoteSock, buff, MAX_DATA_SIZE);
 
+		setCI(remoteSock, std::string(buff));
+
+        // call thread function
+        std::cout << "nefore thread" << std::endl;
+        std::thread t(ThreadFunc, this);
+
 		// call message handler
-		Indexer_MessageHandler(&remoteConnection, remoteSock, std::string(buff));
+//		LB_MessageHandler(&remoteConnection, remoteSock, std::string(buff));
 	}
 
 }
@@ -55,9 +98,9 @@ int 				DKVS_Indexer::run()
 
 
 // get address and port of the server by server number
-std::string 		DKVS_Indexer::Get (int server)
+std::string 		LoadBalancer::Get (int server)
 {
-	GeneralFunctions g;
+	Function g;
 	std::vector<std::string> splitted = g.split(servers[server], ':');
 	return std::string (splitted[0] + ":" + splitted[1]);
 }
@@ -66,19 +109,19 @@ std::string 		DKVS_Indexer::Get (int server)
 /********************************** CLIENT REQUEST ***********************************/
 
 // get address
-std::string 		DKVS_Indexer::Get(std::string key)
+std::string 		LoadBalancer::Get(std::string key)
 {
 	return  hash_ring.get_service(key);
 }
 
 /********************************** HANDLERS ***********************************/
 
-void 				DKVS_Indexer::Indexer_MessageHandler (TCPConnection* conn, int sock, std::string msg)
+void 				LoadBalancer::LB_MessageHandler (Connection* conn, int sock, std::string msg)
 {
 
 	/* msg = <request-type>~<request> */
 
-	GeneralFunctions g;
+	Function g;
 	std::vector<std::string> splitted = g.split(msg, '~');
 
 	int reqType = atoi((splitted[0]).c_str());
@@ -87,14 +130,14 @@ void 				DKVS_Indexer::Indexer_MessageHandler (TCPConnection* conn, int sock, st
 	// message from server
 	if (reqType == HELLO || reqType == GOODBYE || reqType == RESPOND_GOT)
 	{
-		Indexer_ServerMessageHandler (conn, sock, request, reqType);
+		LB_ServerMessageHandler (conn, sock, request, reqType);
 	}
 
 
 	else if (reqType == SET || reqType == GET)
 		// message from client
 	{
-		Indexer_ClientMessageHandler (conn, sock, request, reqType);
+		LB_ClientMessageHandler (conn, sock, request, reqType);
 	}
 
 	// wrong message type
@@ -106,11 +149,11 @@ void 				DKVS_Indexer::Indexer_MessageHandler (TCPConnection* conn, int sock, st
 
 }
 
-void 				DKVS_Indexer::Indexer_ServerMessageHandler (TCPConnection* conn, int sock, std::string request, int requestType)
+void 				LoadBalancer::LB_ServerMessageHandler (Connection* conn, int sock, std::string request, int requestType)
 {
 
 	// parse message
-	GeneralFunctions g;
+	Function g;
 	std::vector<std::string> splitted = g.split(request, ':');
 
 	switch (requestType)
@@ -192,7 +235,7 @@ void 				DKVS_Indexer::Indexer_ServerMessageHandler (TCPConnection* conn, int so
 			sprintf (reqStr, "%d~%s:%d:%s:%d\0", REQUEST_GOT, serverInfo.c_str(), clientSock, key.c_str(), brCounter);
 
 			// connect to server
-			TCPConnection serverConn;
+			Connection serverConn;
 			std::vector<std::string> srvInf = g.split (serverInfo, ':');
 			int serverSock = serverConn.connect_to(srvInf[0], atoi(srvInf[1].c_str()));
 
@@ -208,6 +251,10 @@ void 				DKVS_Indexer::Indexer_ServerMessageHandler (TCPConnection* conn, int so
 			/* respond = <request-type>~<server-address>:<server-port> */
 			sprintf (resStr, "%d~%s\0", GET, serverInfo.c_str());
 
+			if (DEBUG)
+			{
+				std::cout << serverInfo.c_str() << std::endl;
+			}
 			// send respond
 			conn->send_uni(clientSock, std::string(resStr));
 
@@ -228,8 +275,12 @@ void 				DKVS_Indexer::Indexer_ServerMessageHandler (TCPConnection* conn, int so
 
 }
 
-void 				DKVS_Indexer::Indexer_ClientMessageHandler (TCPConnection *conn, int sock, std::string key, int requestType)
+void 				LoadBalancer::LB_ClientMessageHandler (Connection *conn, int sock, std::string key, int requestType)
 {
+	if (DEBUG)
+	{
+		std::cout << "Client request '" << key.c_str() << "', will be served by ";
+	}
 
 	// no running servers
 	if (!servers.size())
@@ -238,7 +289,7 @@ void 				DKVS_Indexer::Indexer_ClientMessageHandler (TCPConnection *conn, int so
 		return;
 	}
 
-	GeneralFunctions g;
+	Function g;
 	char* 						charReqType;
 	sprintf (charReqType, "%d~\0", requestType);
 
@@ -254,7 +305,12 @@ void 				DKVS_Indexer::Indexer_ClientMessageHandler (TCPConnection *conn, int so
 	// return address to client
 	if (requestType == SET)
 	{
+		if (DEBUG)
+		{
+			std::cout << serverInfo.c_str() << std::endl;
+		}
 		conn->send_uni(sock, respond);
+
 	}
 
 	// start searching for key at servers
@@ -266,12 +322,17 @@ void 				DKVS_Indexer::Indexer_ClientMessageHandler (TCPConnection *conn, int so
 		sprintf (gotMsg, "%d~%s:%d:%s:0\0", REQUEST_GOT, serverInfo.c_str(), sock, key.c_str());
 
 		// connect to server
-		TCPConnection serverConn;
+		Connection serverConn;
 		std::vector<std::string> serverInf = g.split (serverInfo, ':');
 		int serverSock = serverConn.connect_to(serverInf[0], atoi(serverInf[1].c_str()));
 
 		// send request to server
 		serverConn.send_uni(serverSock, std::string(gotMsg));
 	}
+
+	conn->disconnect(sock);
 }
+
+
+
 

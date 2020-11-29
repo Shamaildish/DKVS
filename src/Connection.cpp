@@ -5,18 +5,18 @@
  *      Author: edan
  */
 
-#include "TCPConnection.h"
+#include "Connection.h"
 
 /********************************** CONSTRUCTORS/DESTRUCTOR ***********************************/
 
-TCPConnection::TCPConnection()
+Connection::Connection()
 	: m_address(std::string("127.0.0.1")), m_port(0), listen_sock(0)
 {
 
 }
 
 
-TCPConnection::~TCPConnection()
+Connection::~Connection()
 {
 
 }
@@ -33,7 +33,7 @@ TCPConnection::~TCPConnection()
  * 3. bind socket to port.
  * 4. listen up to SOMAXCONN connection
  */
-int TCPConnection::StartListeningOn(int port)
+int Connection::StartListeningOn(int port)
 {
 
 	// open socket
@@ -84,7 +84,7 @@ int TCPConnection::StartListeningOn(int port)
  * 1. create a socket.
  * 2. connect to server.
  */
-int TCPConnection::Connect(std::string address, int port)
+int Connection::Connect(std::string address, int port)
 {
 
 	// create a socket
@@ -110,7 +110,7 @@ int TCPConnection::Connect(std::string address, int port)
 	return sock;
 }
 
-int TCPConnection::Accept(int listener)
+int Connection::Accept(int listener)
 {
 	struct sockaddr_in clientAddr;
 	int addrLen = sizeof(clientAddr);
@@ -122,12 +122,12 @@ int TCPConnection::Accept(int listener)
 	return clientSock;
 }
 
-void TCPConnection::Disconnect(int sock)
+void Connection::Disconnect(int sock)
 {
 	close (sock);
 }
 
-int TCPConnection::Send(int dstSock, std::string msg)
+int Connection::Send(int dstSock, std::string msg)
 {
 
 	int byteSent = 0, totalByteSent = 0;
@@ -148,7 +148,7 @@ int TCPConnection::Send(int dstSock, std::string msg)
 	return totalByteSent;
 }
 
-int TCPConnection::Receive(int srcSock, char* buff, int size)
+int Connection::Receive(int srcSock, char* buff, int size)
 {
 
 	memset (buff, '\0', size);
@@ -190,7 +190,7 @@ int TCPConnection::Receive(int srcSock, char* buff, int size)
 
 /***************************************** PUBLIC *****************************************/
 
-int TCPConnection::send_uni(int dstSock, std::string msg)
+int Connection::send_uni(int dstSock, std::string msg)
 {
 
 	int sizeSent = Send (dstSock, msg);
@@ -204,7 +204,7 @@ int TCPConnection::send_uni(int dstSock, std::string msg)
 	return 0;
 }
 
-int TCPConnection::send_multi(int* dstSocks, int numDests, std::string msg)
+int Connection::send_multi(int* dstSocks, int numDests, std::string msg)
 {
 
 	if (msg.size() > MAX_DATA_SIZE)
@@ -227,7 +227,7 @@ int TCPConnection::send_multi(int* dstSocks, int numDests, std::string msg)
 
 }
 
-int TCPConnection::receive(int srcSock, char* buff, int size)
+int Connection::receive(int srcSock, char* buff, int size)
 {
 	if (size > MAX_DATA_SIZE)
 	{
@@ -243,27 +243,26 @@ int TCPConnection::receive(int srcSock, char* buff, int size)
 	return 0;
 }
 
-int TCPConnection::listen_on(int port)
+int Connection::listen_on(int port)
 {
 	m_port = port;
 	listen_sock = StartListeningOn(port);
 	return listen_sock;
 }
 
-int TCPConnection::connect_to(std::string address, int port)
+int Connection::connect_to(std::string address, int port)
 {
 	m_address = address;
 	m_port = port;
 	return Connect(address, port);
 }
 
-int TCPConnection::accept_connection()
+int Connection::accept_connection()
 {
 	return Accept(listen_sock);
 }
 
-void TCPConnection::disconnect (int sock)
+void Connection::disconnect (int sock)
 {
 	Disconnect(sock);
 }
-

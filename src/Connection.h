@@ -1,9 +1,12 @@
 /*
- * TCPConnection.h
+ * Connection.h
  *
- *  Created on: Oct 18, 2020
+ *  Created on: Nov 26, 2020
  *      Author: edan
  */
+
+#ifndef CONNECTION_H_
+#define CONNECTION_H_
 
 #include <iostream>			/* cout, cin, cerr */
 #include <stdio.h>
@@ -32,22 +35,13 @@
 #include <string.h>
 #include "Defines"
 
-#ifndef TCPCONNECTION_H_
-#define TCPCONNECTION_H_
 
-//class TCPConnection;
-
-//// callback for received messages
-//typedef void(*MessageHanlder)(TCPConnection* conn, int sock, std::string msg);
-
-class TCPConnection
-{
+class Connection {
 
 public:
 
-	TCPConnection();
-//	TCPConnection(MessageHanlder handler);
-	virtual ~TCPConnection();
+	Connection();
+	virtual ~Connection();
 
 	int listen_on(int port);
 	int connect_to(std::string address, int port);
@@ -64,7 +58,6 @@ private:
 	int 			m_port;
 	int				listen_sock;
 	std::string 	m_address;
-//	MessageHanlder	MSGHandler;
 
 	int StartListeningOn(int port);
 	int Connect(std::string address, int port);
@@ -74,4 +67,5 @@ private:
 	int Accept(int listener);
 };
 
-#endif /* TCPCONNECTION_H_ */
+
+#endif /* CONNECTION_H_ */

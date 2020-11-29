@@ -5,21 +5,21 @@
  *      Author: edan
  */
 
-#include "GeneralFunctions.h"
+#include "Function.h"
 
 
-GeneralFunctions::GeneralFunctions()
+Function::Function()
 {
 
 }
 
-GeneralFunctions::~GeneralFunctions()
+Function::~Function()
 {
 
 }
 
 
-std::vector<std::string> GeneralFunctions::split(std::string msg, char delimiter)
+std::vector<std::string> Function::split(std::string msg, char delimiter)
 {
 
 	std::vector<std::string> 	splitted(0);
@@ -52,7 +52,7 @@ std::vector<std::string> GeneralFunctions::split(std::string msg, char delimiter
 }
 
 
-long int GeneralFunctions::power(int b, int e)
+long int Function::power(int b, int e)
 {
 	int res = 1;
 	for (int i=0; i<e; i++)
@@ -62,7 +62,7 @@ long int GeneralFunctions::power(int b, int e)
 	return res;
 }
 
-std::string GeneralFunctions::getIP()
+std::string Function::getIP()
 {
 	char *IPbuffer;
 	struct hostent* host_enrty;

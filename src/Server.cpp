@@ -5,21 +5,21 @@
  *      Author: edan
  */
 
-#include "DKVSServer.h"
+#include "Server.h"
 
-void Server_MessageHandler(TCPConnection *conn, int sock, std::string msg);
-void Server_IndexerMessageHandler(TCPConnection *conn, int sock, std::string request, int reqType);
-void Server_ClientMessageHandler(TCPConnection *conn, int sock, std::string request, int reqType);
+void Server_MessageHandler(Connection *conn, int sock, std::string msg);
+void Server_LBMessageHandler(Connection *conn, int sock, std::string request, int reqType);
+void Server_ClientMessageHandler(Connection *conn, int sock, std::string request, int reqType);
 
 /********************************** CONSTRUCTORS/DESTRUCTOR ***********************************/
 
-DKVS_Server::DKVS_Server(char* indexerAddr, int indxPort, int hashSize)
-: indexerAddr(std::string(indexerAddr)), indexerPort(indxPort), servicesPorts(std::vector<int>(0)), indexerSock(0), serverAddr(std::string(""))
+Server::Server(char* indexerAddr, int indxPort, int hashSize)
+: lbAddr(std::string(indexerAddr)), lbPort(indxPort), servicesPorts(std::vector<int>(0)), lbSock(0), serverAddr(std::string(""))
 {
 	hashTable.create_table(hashSize);
 }
 
-DKVS_Server::~DKVS_Server()
+Server::~Server()
 {
 
 }
@@ -27,11 +27,11 @@ DKVS_Server::~DKVS_Server()
 
 /********************************** PUBLIC ***********************************/
 
-void 				DKVS_Server::run_service(int portPos)
+void 				Server::run_service(int portPos)
 {
 
 	// get local ip
-	GeneralFunctions g;
+	Function g;
 	serverAddr = g.getIP();
 
 	std::cout	<< "address: " << serverAddr.c_str() << std::endl
@@ -43,14 +43,14 @@ void 				DKVS_Server::run_service(int portPos)
 	}
 
 	// listen
-	TCPConnection listener;
+	Connection listener;
 	listener.listen_on(servicesPorts[portPos]);
 
 	// connect to indexer
-	TCPConnection indexerConn;
+	Connection indexerConn;
 	char buff[MAX_DATA_SIZE];
 
-	indexerSock = indexerConn.connect_to(indexerAddr, indexerPort);
+	lbSock = indexerConn.connect_to(lbAddr, lbPort);
 
 	// generate hello message for indexer
 	/* request = <request-type>~<server-address>:<service-port>:<capacity> */
@@ -58,10 +58,10 @@ void 				DKVS_Server::run_service(int portPos)
 	sprintf (buff, "%d~%s:%d:%d\0", HELLO, serverAddr.c_str(), servicesPorts[portPos], SERVER_CAPACITY);
 
 	// send hello message to indexer
-	indexerConn.send_uni(indexerSock, std::string(buff));
+	indexerConn.send_uni(lbSock, std::string(buff));
 
 	// wait to receive ack from indexer
-	if (indexerConn.receive(indexerSock, buff, MAX_DATA_SIZE) == 0)
+	if (indexerConn.receive(lbSock, buff, MAX_DATA_SIZE) == 0)
 	{
 		if (std::string(buff).compare("ACK"))
 		{
@@ -70,14 +70,14 @@ void 				DKVS_Server::run_service(int portPos)
 		}
 		else
 		{
-			std::cout << "connected to load balancer at " << indexerAddr.c_str() << ":" << indexerPort << std::endl;
+			std::cout << "connected to load balancer at " << lbAddr.c_str() << ":" << lbPort << std::endl;
 		}
 	}
 
 	else
 	{
 		std::cout << "ERROR: cannot connect to indexer" << std::endl;
-		indexerConn.disconnect(indexerSock);
+		indexerConn.disconnect(lbSock);
 		return;
 	}
 
@@ -101,18 +101,18 @@ void 				DKVS_Server::run_service(int portPos)
 }
 
 // get services ports
-std::vector<int> 	DKVS_Server::get_services_ports()
+std::vector<int> 	Server::get_services_ports()
 {
 	return servicesPorts;
 }
 
-int 				DKVS_Server::get_services_ports(int pos)
+int 				Server::get_services_ports(int pos)
 {
 	return servicesPorts[pos];
 }
 
 // set service port
-int 				DKVS_Server::add_service (int port)
+int 				Server::add_service (int port)
 {
 	servicesPorts.push_back(port);
 	return servicesPorts.size() - 1;
@@ -120,10 +120,10 @@ int 				DKVS_Server::add_service (int port)
 
 /********************************** MESSAGE HANDLERS ***********************************/
 
-void 				DKVS_Server::Server_MessageHandler(TCPConnection* conn, int sock, std::string msg)
+void 				Server::Server_MessageHandler(Connection* conn, int sock, std::string msg)
 {
 
-	GeneralFunctions g;
+	Function g;
 
 	// parse request
 	/* request = <request-type>~<request> */
@@ -133,7 +133,7 @@ void 				DKVS_Server::Server_MessageHandler(TCPConnection* conn, int sock, std::
 
 	if (reqType == REQUEST_GOT || reqType == GOODBYE)
 	{
-		Server_IndexerMessageHandler(conn, sock, request, reqType);
+		Server_LBMessageHandler(conn, sock, request, reqType);
 	}
 
 	else if (reqType == SET || reqType == GET)
@@ -148,10 +148,10 @@ void 				DKVS_Server::Server_MessageHandler(TCPConnection* conn, int sock, std::
 	}
 }
 
-void 				DKVS_Server::Server_IndexerMessageHandler(TCPConnection *conn, int sock, std::string request, int reqType)
+void 				Server::Server_LBMessageHandler(Connection *conn, int sock, std::string request, int reqType)
 {
 
-	GeneralFunctions g;
+	Function g;
 	std::vector<std::string> splitted = g.split(request, ':');
 	std::string key = splitted[0];
 	std::string respond("");
@@ -190,10 +190,10 @@ void 				DKVS_Server::Server_IndexerMessageHandler(TCPConnection *conn, int sock
 	}
 }
 
-void 				DKVS_Server::Server_ClientMessageHandler(TCPConnection *conn, int sock, std::string request, int reqType)
+void 				Server::Server_ClientMessageHandler(Connection *conn, int sock, std::string request, int reqType)
 {
 
-	GeneralFunctions g;
+	Function g;
 	char resStr[int(MAX_DATA_SIZE/10)];
 
 	// split
@@ -255,5 +255,4 @@ void 				DKVS_Server::Server_ClientMessageHandler(TCPConnection *conn, int sock,
 	// send respond to client
 	conn->send_uni(sock, respond);
 }
-
 

@@ -5,20 +5,15 @@
  *      Author: edan
  */
 
-#include "DKVSClient.h"
+#include "Client.h"
 
-void Client_IndexerMessageHandler(TCPConnection* conn, int sock, std::string request, int reqType);
-void Client_ServerMessageHandler(TCPConnection* conn, int sock, std::string request, int reqType);
-int ConnectToIndexer();
-int ConnectToServer(std::string serverAddr, int serverPort);
-
-DKVS_Client::DKVS_Client(std::string lbAddr, int lbPort)
+Client::Client(std::string lbAddr, int lbPort)
 : lb_address(lbAddr), lb_port (lbPort), lb_sock(0)
 {
 	Run();
 }
 
-DKVS_Client::~DKVS_Client()
+Client::~Client()
 {
 
 }
@@ -26,7 +21,7 @@ DKVS_Client::~DKVS_Client()
 /*					PRIVATE					*/
 
 // menu
-void 			DKVS_Client::Menu()
+void 			Client::Menu()
 {
 
 	std::cout	<< std::endl
@@ -42,10 +37,10 @@ void 			DKVS_Client::Menu()
 }
 
 // run
-void 			DKVS_Client::Run()
+void 			Client::Run()
 {
 
-	GeneralFunctions g;
+	Function g;
 	char buff[MAX_DATA_SIZE];
 	std::string key;
 	std::string value;
@@ -53,7 +48,7 @@ void 			DKVS_Client::Run()
 	char usrInput;
 
 	// connect to load balancer
-	TCPConnection lbConn;
+	Connection lbConn;
 
 
 	// while user not quieting
@@ -106,7 +101,7 @@ void 			DKVS_Client::Run()
 		int serverPort = atoi(splitted[1].c_str());
 
 		// connect to server
-		TCPConnection serverConn;
+		Connection serverConn;
 		int serverSock = serverConn.connect_to(serverAddr, serverPort);
 
 		// set
@@ -175,5 +170,4 @@ void 			DKVS_Client::Run()
 
 	}
 }
-
 

@@ -1,12 +1,12 @@
 /*
- * GeneralFunctions.h
+ * Function.h
  *
- *  Created on: Nov 8, 2020
+ *  Created on: Nov 26, 2020
  *      Author: edan
  */
 
-#ifndef GENERALFUNCTIONS_H_
-#define GENERALFUNCTIONS_H_
+#ifndef FUNCTION_H_
+#define FUNCTION_H_
 
 #include "Defines"
 #include <iostream>
@@ -20,14 +20,14 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-class GeneralFunctions {
+class Function {
 public:
-	GeneralFunctions();
-	virtual ~GeneralFunctions();
+	Function();
+	virtual ~Function();
 
 	std::vector<std::string> 	split(std::string msg, char delimiter);
 	std::string 				getIP();
 	long int					power (int b, int e);
 };
 
-#endif /* GENERALFUNCTIONS_H_ */
+#endif /* FUNCTION_H_ */
