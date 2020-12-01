@@ -1,6 +1,6 @@
 Distributed Key-Value Store
 
-This repository holds 1 program with 3 diffent entities:
+This repository holds 1 program with 3 different entities:
 
 1 Load Balancer
 2 Server (Storage)
