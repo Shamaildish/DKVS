@@ -12,13 +12,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f43fd86b-8ee5-4076-951d-5d76dcab04d3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/DKVS.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/DKVS1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/DKVS2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Defines" beforeDir="false" afterPath="$PROJECT_DIR$/Defines" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Client.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoadBalancer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/LoadBalancer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/LoadBalancer.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/Server.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoadBalancer.h" beforeDir="false" afterPath="$PROJECT_DIR$/LoadBalancer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/LoadBalancer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/LoadBalancer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DKVS" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DKVS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/client__err" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/close" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/close" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/run" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/run" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/run2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/server__err" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +49,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -49,16 +59,6 @@
     <configuration name="DKVS" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DKVS" TARGET_NAME="DKVS" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DKVS" RUN_TARGET_NAME="DKVS">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -71,6 +71,9 @@
       <option name="presentableId" value="Default" />
       <updated>1606667554552</updated>
       <workItem from="1606667556680" duration="4773000" />
+      <workItem from="1606932820101" duration="2303000" />
+      <workItem from="1607017688547" duration="4629000" />
+      <workItem from="1607358761491" duration="2704000" />
     </task>
     <servers />
   </component>

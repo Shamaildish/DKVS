@@ -19,6 +19,9 @@ LoadBalancer::LoadBalancer(int port, int hashSize)
 : lb_port(port), servers(std::vector<std::string>(0)), hash_ring(ConssistingHash(hashSize))
 //, conn(new Connection()), temp_sock(-1), temp_msg(std::string(0))
 {
+    connection = nullptr;
+    temp_sock = -1;
+    temp_msg = std::string("");
     run();
 }
 
@@ -26,7 +29,9 @@ LoadBalancer::LoadBalancer(LoadBalancer *lb)
         : lb_port(lb->lb_port), servers(lb->servers), hash_ring(lb->hash_ring)
 //        , conn(lb->conn), temp_sock(lb->temp_sock), temp_msg(lb->temp_msg)
 {
-
+    connection = lb->getConnection();
+    temp_sock = lb->getSock();
+    temp_msg = lb->getMessage();
 }
 
 LoadBalancer::~LoadBalancer()
@@ -38,18 +43,18 @@ LoadBalancer::~LoadBalancer()
 
 void LoadBalancer::setCI(int sock, std::string message)
 {
-    cInfo.sock = sock;
-    cInfo.msg = message;
+    temp_sock = sock;
+    temp_msg = message;
 }
 
 int LoadBalancer::getSock()
 {
-    return cInfo.sock;
+    return temp_sock;
 }
 
 std::string LoadBalancer::getMessage()
 {
-    return cInfo.msg;
+    return temp_msg;
 }
 
 Connection* LoadBalancer::getConnection()
@@ -59,7 +64,6 @@ Connection* LoadBalancer::getConnection()
 
 void    ThreadFunc(LoadBalancer *lb)
 {
-    std::cout << "ThreadFunc" << std::endl;
     lb->LB_MessageHandler(lb->getConnection(), lb->getSock(), lb->getMessage());
 }
 
@@ -77,19 +81,17 @@ int 				LoadBalancer::run()
 	while (threadCount <= MAX_THREADS)
 	{
 		// accept connection
+		std::cout << "waiting for new connection..." << std::endl;
         remoteSock = remoteConnection.accept_connection();
-
-		// receive message
+        std::cout << "new connection!" << std::endl;
+        // receive message
 		remoteConnection.receive(remoteSock, buff, MAX_DATA_SIZE);
 
 		setCI(remoteSock, std::string(buff));
 
         // call thread function
-//        std::thread t(ThreadFunc, this);
         threads[threadCount] = std::thread(ThreadFunc, this);
         threadCount++;
-       		// call message handler
-//		LB_MessageHandler(&remoteConnection, remoteSock, std::string(buff));
 	}
 
 	for (int thrd=0; thrd<threadCount; thrd++)
@@ -127,6 +129,7 @@ void 				LoadBalancer::LB_MessageHandler (Connection* conn, int sock, std::strin
 	/* msg = <request-type>~<request> */
 
 	Function g;
+
 	std::vector<std::string> splitted = g.split(msg, '~');
 
 	int reqType = atoi((splitted[0]).c_str());
@@ -337,6 +340,7 @@ void 				LoadBalancer::LB_ClientMessageHandler (Connection *conn, int sock, std:
 
 	conn->disconnect(sock);
 }
+
 
 
 

@@ -2,4 +2,4 @@
 
 
 
-kill -9 $(pidof DKVS) 2>/dev/null
+kill -9 $(pidof xterm) 2>/dev/null

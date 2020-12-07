@@ -54,7 +54,6 @@ void 			Client::Run()
 	// while user not quieting
 	while (1)
 	{
-		lb_sock = lbConn.connect_to(lb_address, lb_port);
 		// show menu
 		Menu();
 
@@ -72,21 +71,18 @@ void 			Client::Run()
 		std::cout << "Enter key: ";
 		std::cin >> key;
 
-		if (DEBUG)
-		{
-			std::cout << "key: " << key.c_str() << std::endl;
-		}
-
 		// generate message to indexer
 		/* request = <request-type>~<key> */
 		sprintf (buff, "%d~%s\0", SET, key.c_str());
 
 		// send message to indexer
+        lb_sock = lbConn.connect_to(lb_address, lb_port);
 		lbConn.send_uni(lb_sock, std::string(buff));
 
 		// wait for indexer respond
 		memset(buff, '\0', MAX_DATA_SIZE);
 		lbConn.receive(lb_sock, buff, MAX_DATA_SIZE);
+        lbConn.disconnect(lb_sock);
 
 		if (atoi((char*)&buff[0]) != SET)
 		{

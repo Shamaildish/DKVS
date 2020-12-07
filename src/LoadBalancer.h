@@ -14,12 +14,6 @@
 #include "Function.h"
 #include <thread>
 
-typedef struct ConnectionInfo
-{
-    int         sock;
-    std::string msg;
-}CI;
-
 class LoadBalancer {
 public:
 	LoadBalancer(int port, int hashSize);
@@ -27,7 +21,6 @@ public:
 	~LoadBalancer();
 
     void                        setCI(int sock, std::string message);
-
     Connection*                 getConnection();
     int                         getSock();
     std::string                 getMessage();
@@ -41,7 +34,8 @@ private:
 	std::vector<std::string>	servers;	// string <server-address>:<server-port>:<remaining-storage>:<server-capacity>
 	ConssistingHash				hash_ring;
 	Connection*                 connection;
-	CI                          cInfo;
+	int                         temp_sock;
+	std::string                 temp_msg;
 
 //	Connection*                 conn;
 //	int                         temp_sock;
