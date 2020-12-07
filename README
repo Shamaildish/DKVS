@@ -1,7 +1,5 @@
 Distributed Key-Value Store
 
-This repository holds 1 program with 3 diffent entities:
-
 1 Load Balancer
 2 Server (Storage)
 3 Client
@@ -14,7 +12,7 @@ This repository holds 1 program with 3 diffent entities:
 (*) responsible for distributing the requests that arrives to the servers.
 (*) being notify when a new Server is ready to receive requests form Clients.
 (*) recives a requests from Clients and responding with a service address (server address and service port).
-(*) using 'consisting hash' in order to enable the joining of new service.
+(*) using 'consisting hash' in order to enable the joining of new services.
 
 
 2 Server
@@ -22,7 +20,7 @@ This repository holds 1 program with 3 diffent entities:
 
 (*) notify Load Balancer when ready to receive requests from Clients.
 (*) receiveing requests from Clients and responding accordingly.
-(*) using hash function in order to hold Key-Value.
+(*) using hash function in order to hold Key-Value pairs.
 
 
 3 Client
@@ -32,11 +30,12 @@ This repository holds 1 program with 3 diffent entities:
 (*) sending requests to the Server in order to get service.
 
 
-You can simply run the program using script 'run' in Debug directory with 2 arguments:
-1. number of servers you would like to deploy.
+You can simply run the program using script 'run' in dir 'src/cmake-build-debug' with 3 arguments:
+1. number of servers you would like to deploy (currently adding one more server after clients being deployed).
+2. number of clients you wold like to deploy
 2. capacity of servers.
 
-You can run the program using 'DKVS' in Debug directory.
+You can run the program using 'DKVS' in 'src/cmake-build-debug' directory.
 - To deploy load balancer use command "./DKVS 0 <consisting-hash-size>"
 - To deploy server use command "./DKVS 1 <port> <hash-size>"
 - To deploy the client use command "./DKVS 2"
