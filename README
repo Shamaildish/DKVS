@@ -3,6 +3,7 @@ Distributed Key-Value Store
 1 Load Balancer
 2 Server (Storage)
 3 Client
+4 Run
 
 
 
@@ -29,6 +30,9 @@ Distributed Key-Value Store
 (*) sending requests to the Load Balancer in order to get service address.
 (*) sending requests to the Server in order to get service.
 
+
+4 Run
+-------
 
 You can simply run the program using script 'run' in dir 'src/cmake-build-debug' with 3 arguments:
 1. number of servers you would like to deploy (currently adding one more server after clients being deployed).
