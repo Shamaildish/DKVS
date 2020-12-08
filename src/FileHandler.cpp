@@ -4,21 +4,17 @@
 
 #include "FileHandler.h"
 
-FileHandler::FileHandler(char *fileName) {
-    file.open(fileName);
-
-    // cannot open file
-    if (!file)
-    {
-        std::cout << "ERROR: cannot open file " << fileName << std::endl;
-    }
+FileHandler::FileHandler() {
 }
 
 FileHandler::~FileHandler() {
 
 }
 
-std::vector<request*> FileHandler::getRequestsFromFile() {
+std::vector<request*> FileHandler::getRequestsFromFile(std::string fileName) {
+
+    std::ifstream file;
+    file.open(fileName.c_str());
 
     std::vector<request*> requests(0);
     bool firstState = true;
@@ -87,4 +83,28 @@ std::vector<request*> FileHandler::getRequestsFromFile() {
     }
     requests.push_back(req);
     return requests;
+}
+
+
+std::string FileHandler::convertFileToString(std::string filename)
+{
+    std::ifstream file;
+    file.open(filename.c_str());
+    std::string line;
+    std::string strFile;
+
+    while (getline(file, line))
+    {
+        strFile.append(line);
+    }
+    return strFile;
+}
+
+std::string FileHandler::convertStringToFile(std::string strFile, std::string fileName)
+{
+    std::ofstream file;
+    file.open(fileName.c_str());
+    file << strFile;
+    file.close();
+    return fileName;
 }

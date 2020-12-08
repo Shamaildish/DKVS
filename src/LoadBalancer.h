@@ -38,36 +38,15 @@ private:
 	int                         temp_sock;
 	std::string                 temp_msg;
 
-//	Connection*                 conn;
-//	int                         temp_sock;
-//	std::string                 temp_msg;
-
     // run indexer
     int                         run();
 
-    // set information of the server
-	void 						SetInfo(std::string address, int port, int remainingStorage, int capacity, int server);
-
-	// add server
-	int 						AddServerToList(std::string address, int port, int capacity);
-
-	// get address and port of the server by server number
-	std::string 				Get (int server);
-
-	// find place in servers
-	int 						FindAvalibleStorage (int msgSize);
-
-	// store key
-	int 						Store(std::string key, std::string serverAddr, int serverPort);
-
 	// get address and port of the server by key
-	std::string 				Get(std::string key);
-
+	std::string 				GetPos(std::string key);
 
 	// messages handlers
-//    void 				LB_MessageHandler (Connection *conn, int sock, std::string msg);
-	void 				LB_ServerMessageHandler (Connection* conn, int sock, std::string msg, int reqType);
-	void 				LB_ClientMessageHandler (Connection* conn, int sock, std::string msg, int reqType);
+	void 				        LB_ServerMessageHandler (Connection* conn, int sock, std::string msg, int reqType);
+	void 				        LB_ClientMessageHandler (Connection* conn, int sock, std::string msg, int reqType);
 
 };
 

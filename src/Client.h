@@ -8,7 +8,7 @@
 #ifndef CLIENT_H_
 #define CLIENT_H_
 
-
+#include <fstream>
 #include "Connection.h"
 #include "Function.h"
 #include "Defines"
@@ -16,6 +16,9 @@
 
 class Client {
 private:
+
+    // file handling
+    int sendRequestsFilesToServers(std::string fileName);
 
 	// menu
 	void Menu();
@@ -30,6 +33,8 @@ public:
 	std::string lb_address;
 	int			lb_port;
 	int			lb_sock;
+
+
 
 };
 #endif /* CLIENT_H_ */

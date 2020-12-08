@@ -101,22 +101,11 @@ int 				LoadBalancer::run()
 
 }
 
-/********************************** PRIVATE ***********************************/
-
-
-// get address and port of the server by server number
-std::string 		LoadBalancer::Get (int server)
-{
-	Function g;
-	std::vector<std::string> splitted = g.split(servers[server], ':');
-	return std::string (splitted[0] + ":" + splitted[1]);
-}
-
 
 /********************************** CLIENT REQUEST ***********************************/
 
 // get address
-std::string 		LoadBalancer::Get(std::string key)
+std::string 		LoadBalancer::GetPos(std::string key)
 {
 	return  hash_ring.get_service(key);
 }
@@ -135,18 +124,25 @@ void 				LoadBalancer::LB_MessageHandler (Connection* conn, int sock, std::strin
 	int reqType = atoi((splitted[0]).c_str());
 	std::string request = splitted[1];
 
+	std::cout << "msg --- " << msg.c_str() << std::endl;
+
 	// message from server
 	if (reqType == HELLO || reqType == GOODBYE || reqType == RESPOND_GOT)
 	{
 		LB_ServerMessageHandler (conn, sock, request, reqType);
 	}
 
-
 	else if (reqType == SET || reqType == GET)
 		// message from client
 	{
 		LB_ClientMessageHandler (conn, sock, request, reqType);
 	}
+
+	else if (reqType == IS_FILE)
+    {
+	    std::cout << "request for file" << std::endl;
+    }
+
 
 	// wrong message type
 	else
@@ -305,7 +301,7 @@ void 				LoadBalancer::LB_ClientMessageHandler (Connection *conn, int sock, std:
 	std::string 				serverInfo;
 
 	// get server info
-	serverInfo = Get(key);
+	serverInfo = GetPos(key);
 
 	// generate respond
 	respond.append(serverInfo);

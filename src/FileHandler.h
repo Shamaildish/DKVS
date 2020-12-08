@@ -5,6 +5,7 @@
 #ifndef DKVS_FILEHANDLER_H
 #define DKVS_FILEHANDLER_H
 
+#include "Function.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -19,14 +20,14 @@ typedef struct request {
 
 class FileHandler {
 private:
-    std::ifstream file;
 
 public:
-    FileHandler(char* fileName);
+    FileHandler();
     ~FileHandler();
 
-    std::vector<request*> getRequestsFromFile();
-
+    std::vector<request*>   getRequestsFromFile(std::string reqFile);
+    std::string             convertFileToString(std::string fileName);
+    std::string             convertStringToFile(std::string strFile, std::string fileName);
 };
 
 #endif //DKVS_FILEHANDLER_H

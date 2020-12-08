@@ -8,6 +8,7 @@
 #ifndef CONNECTION_H_
 #define CONNECTION_H_
 
+#include "FileHandler.h"
 #include <iostream>			/* cout, cin, cerr */
 #include <stdio.h>
 #include <stdlib.h>			/* atoi */
@@ -45,10 +46,12 @@ public:
 
 	int listen_on(int port);
 	int connect_to(std::string address, int port);
+    int connect_to(std::string fullAddress);
 	int accept_connection();
 
 	int send_uni(int dstSock, std::string msg);
 	int send_multi(int* dstSocks, int numDests, std::string msg);
+	int send_file(int dstSock, std::string filename);
 	int receive(int srcSock, char* buff, int size);
 	void disconnect (int sock);
 

@@ -227,6 +227,23 @@ int Connection::send_multi(int* dstSocks, int numDests, std::string msg)
 
 }
 
+
+int Connection::send_file(int dstSock, std::string filename)
+{
+    FileHandler fHandler;
+    std::string strFile("2:");
+    strFile.append(fHandler.convertFileToString(filename));
+
+    int sizeSent = Send (dstSock, strFile);
+    if (sizeSent != strFile.size())
+    {
+        std::cout << "WARNING: not all data sent successfully" << std::endl
+                  << "file of size " << strFile.size() << ", total sent: " << sizeSent << std::endl;
+        return 1;
+    }
+    return 0;
+}
+
 int Connection::receive(int srcSock, char* buff, int size)
 {
 	if (size > MAX_DATA_SIZE)
@@ -257,6 +274,15 @@ int Connection::connect_to(std::string address, int port)
 	return Connect(address, port);
 }
 
+int Connection::connect_to(std::string fullAddress)
+{
+    Function g;
+    std::vector<std::string> serverInfo = g.split(fullAddress, ':');
+    m_address = serverInfo[0];
+    m_port = atoi(serverInfo[1].c_str());
+    return Connect(m_address, m_port);
+}
+
 int Connection::accept_connection()
 {
 	return Accept(listen_sock);
@@ -266,3 +292,4 @@ void Connection::disconnect (int sock)
 {
 	Disconnect(sock);
 }
+
