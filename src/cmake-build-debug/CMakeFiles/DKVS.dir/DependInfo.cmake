@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/edan/workspace/DKVS/src/Client.cpp" "/home/edan/workspace/DKVS/src/cmake-build-debug/CMakeFiles/DKVS.dir/Client.cpp.o"
   "/home/edan/workspace/DKVS/src/Connection.cpp" "/home/edan/workspace/DKVS/src/cmake-build-debug/CMakeFiles/DKVS.dir/Connection.cpp.o"
   "/home/edan/workspace/DKVS/src/ConssistingHash.cpp" "/home/edan/workspace/DKVS/src/cmake-build-debug/CMakeFiles/DKVS.dir/ConssistingHash.cpp.o"
+  "/home/edan/workspace/DKVS/src/FileHandler.cpp" "/home/edan/workspace/DKVS/src/cmake-build-debug/CMakeFiles/DKVS.dir/FileHandler.cpp.o"
   "/home/edan/workspace/DKVS/src/Function.cpp" "/home/edan/workspace/DKVS/src/cmake-build-debug/CMakeFiles/DKVS.dir/Function.cpp.o"
   "/home/edan/workspace/DKVS/src/Hash.cpp" "/home/edan/workspace/DKVS/src/cmake-build-debug/CMakeFiles/DKVS.dir/Hash.cpp.o"
   "/home/edan/workspace/DKVS/src/LoadBalancer.cpp" "/home/edan/workspace/DKVS/src/cmake-build-debug/CMakeFiles/DKVS.dir/LoadBalancer.cpp.o"

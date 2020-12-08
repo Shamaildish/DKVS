@@ -12,6 +12,7 @@
 #include "ConssistingHash.h"
 #include "Defines"
 #include "Function.h"
+#include "FileHandler.h"
 #include <thread>
 
 class LoadBalancer {

@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="DKVS" targetName="DKVS" />
@@ -12,22 +36,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f43fd86b-8ee5-4076-951d-5d76dcab04d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DKVS.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/DKVS1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/DKVS2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Client.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoadBalancer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/LoadBalancer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LoadBalancer.h" beforeDir="false" afterPath="$PROJECT_DIR$/LoadBalancer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/LoadBalancer.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/LoadBalancer.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DKVS.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DKVS" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DKVS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/client__err" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/close" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/close" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/run" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/run" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/run2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/server__err" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/DKVS.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DKVS.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +84,19 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DKVS" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="DKVS" TARGET_NAME="DKVS" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="DKVS" RUN_TARGET_NAME="DKVS">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -73,11 +111,72 @@
       <workItem from="1606667556680" duration="4773000" />
       <workItem from="1606932820101" duration="2303000" />
       <workItem from="1607017688547" duration="4629000" />
-      <workItem from="1607358761491" duration="3063000" />
+      <workItem from="1607358761491" duration="3507000" />
+      <workItem from="1607405751256" duration="7733000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1329" height="335" key="GridCell.Tab.0.bottom" timestamp="1607412835560">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state width="1329" height="335" key="GridCell.Tab.0.bottom/65.24.1375.771@65.24.1375.771" timestamp="1607412835560" />
+    <state width="1329" height="335" key="GridCell.Tab.0.center" timestamp="1607412835559">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state width="1329" height="335" key="GridCell.Tab.0.center/65.24.1375.771@65.24.1375.771" timestamp="1607412835559" />
+    <state width="1329" height="335" key="GridCell.Tab.0.left" timestamp="1607412835558">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state width="1329" height="335" key="GridCell.Tab.0.left/65.24.1375.771@65.24.1375.771" timestamp="1607412835558" />
+    <state width="1329" height="335" key="GridCell.Tab.0.right" timestamp="1607412835560">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state width="1329" height="335" key="GridCell.Tab.0.right/65.24.1375.771@65.24.1375.771" timestamp="1607412835560" />
+    <state width="1329" height="335" key="GridCell.Tab.1.bottom" timestamp="1607412835562">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state width="1329" height="335" key="GridCell.Tab.1.bottom/65.24.1375.771@65.24.1375.771" timestamp="1607412835562" />
+    <state width="1329" height="335" key="GridCell.Tab.1.center" timestamp="1607412835561">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state width="1329" height="335" key="GridCell.Tab.1.center/65.24.1375.771@65.24.1375.771" timestamp="1607412835561" />
+    <state width="1329" height="335" key="GridCell.Tab.1.left" timestamp="1607412835561">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state width="1329" height="335" key="GridCell.Tab.1.left/65.24.1375.771@65.24.1375.771" timestamp="1607412835561" />
+    <state width="1329" height="335" key="GridCell.Tab.1.right" timestamp="1607412835561">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state width="1329" height="335" key="GridCell.Tab.1.right/65.24.1375.771@65.24.1375.771" timestamp="1607412835561" />
+    <state x="415" y="116" width="672" height="678" key="search.everywhere.popup" timestamp="1607406625181">
+      <screen x="65" y="24" width="1375" height="771" />
+    </state>
+    <state x="415" y="116" width="672" height="678" key="search.everywhere.popup/65.24.1375.771@65.24.1375.771" timestamp="1607406625181" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>77</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

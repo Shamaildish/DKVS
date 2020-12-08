@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/DKVS.dir/Client.cpp.o"
   "CMakeFiles/DKVS.dir/Connection.cpp.o"
   "CMakeFiles/DKVS.dir/ConssistingHash.cpp.o"
+  "CMakeFiles/DKVS.dir/FileHandler.cpp.o"
   "CMakeFiles/DKVS.dir/Function.cpp.o"
   "CMakeFiles/DKVS.dir/Hash.cpp.o"
   "CMakeFiles/DKVS.dir/LoadBalancer.cpp.o"

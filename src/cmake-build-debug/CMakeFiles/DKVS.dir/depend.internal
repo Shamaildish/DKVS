@@ -16,6 +16,10 @@ CMakeFiles/DKVS.dir/ConssistingHash.cpp.o
  /home/edan/workspace/DKVS/src/ConssistingHash.cpp
  /home/edan/workspace/DKVS/src/ConssistingHash.h
  /home/edan/workspace/DKVS/src/Defines
+CMakeFiles/DKVS.dir/FileHandler.cpp.o
+ /home/edan/workspace/DKVS/src/Defines
+ /home/edan/workspace/DKVS/src/FileHandler.cpp
+ /home/edan/workspace/DKVS/src/FileHandler.h
 CMakeFiles/DKVS.dir/Function.cpp.o
  /home/edan/workspace/DKVS/src/Defines
  /home/edan/workspace/DKVS/src/Function.cpp
@@ -29,6 +33,7 @@ CMakeFiles/DKVS.dir/LoadBalancer.cpp.o
  /home/edan/workspace/DKVS/src/Connection.h
  /home/edan/workspace/DKVS/src/ConssistingHash.h
  /home/edan/workspace/DKVS/src/Defines
+ /home/edan/workspace/DKVS/src/FileHandler.h
  /home/edan/workspace/DKVS/src/Function.h
  /home/edan/workspace/DKVS/src/LoadBalancer.cpp
  /home/edan/workspace/DKVS/src/LoadBalancer.h
@@ -40,12 +45,6 @@ CMakeFiles/DKVS.dir/Server.cpp.o
  /home/edan/workspace/DKVS/src/Server.cpp
  /home/edan/workspace/DKVS/src/Server.h
 CMakeFiles/DKVS.dir/main.cpp.o
- /home/edan/workspace/DKVS/src/Client.h
- /home/edan/workspace/DKVS/src/Connection.h
- /home/edan/workspace/DKVS/src/ConssistingHash.h
  /home/edan/workspace/DKVS/src/Defines
- /home/edan/workspace/DKVS/src/Function.h
- /home/edan/workspace/DKVS/src/Hash.h
- /home/edan/workspace/DKVS/src/LoadBalancer.h
- /home/edan/workspace/DKVS/src/Server.h
+ /home/edan/workspace/DKVS/src/FileHandler.h
  /home/edan/workspace/DKVS/src/main.cpp

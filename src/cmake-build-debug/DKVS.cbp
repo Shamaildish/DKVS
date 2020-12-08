@@ -107,6 +107,12 @@
 		<Unit filename="/home/edan/workspace/DKVS/src/Defines">
 			<Option target="DKVS"/>
 		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/FileHandler.cpp">
+			<Option target="DKVS"/>
+		</Unit>
+		<Unit filename="/home/edan/workspace/DKVS/src/FileHandler.h">
+			<Option target="DKVS"/>
+		</Unit>
 		<Unit filename="/home/edan/workspace/DKVS/src/Function.cpp">
 			<Option target="DKVS"/>
 		</Unit>

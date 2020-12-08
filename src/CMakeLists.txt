@@ -22,4 +22,4 @@ add_executable(DKVS
         LoadBalancer.h
         main.cpp
         Server.cpp
-        Server.h)
+        Server.h FileHandler.cpp FileHandler.h)

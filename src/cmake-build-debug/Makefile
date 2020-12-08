@@ -224,6 +224,33 @@ ConssistingHash.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DKVS.dir/build.make CMakeFiles/DKVS.dir/ConssistingHash.cpp.s
 .PHONY : ConssistingHash.cpp.s
 
+FileHandler.o: FileHandler.cpp.o
+
+.PHONY : FileHandler.o
+
+# target to build an object file
+FileHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DKVS.dir/build.make CMakeFiles/DKVS.dir/FileHandler.cpp.o
+.PHONY : FileHandler.cpp.o
+
+FileHandler.i: FileHandler.cpp.i
+
+.PHONY : FileHandler.i
+
+# target to preprocess a source file
+FileHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DKVS.dir/build.make CMakeFiles/DKVS.dir/FileHandler.cpp.i
+.PHONY : FileHandler.cpp.i
+
+FileHandler.s: FileHandler.cpp.s
+
+.PHONY : FileHandler.s
+
+# target to generate assembly for a file
+FileHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DKVS.dir/build.make CMakeFiles/DKVS.dir/FileHandler.cpp.s
+.PHONY : FileHandler.cpp.s
+
 Function.o: Function.cpp.o
 
 .PHONY : Function.o
@@ -377,6 +404,9 @@ help:
 	@echo "... ConssistingHash.o"
 	@echo "... ConssistingHash.i"
 	@echo "... ConssistingHash.s"
+	@echo "... FileHandler.o"
+	@echo "... FileHandler.i"
+	@echo "... FileHandler.s"
 	@echo "... Function.o"
 	@echo "... Function.i"
 	@echo "... Function.s"
